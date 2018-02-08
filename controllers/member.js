@@ -1,16 +1,17 @@
 var express          = require('express');
 //const passport       = require("passport");
 var routerMember     = express.Router();
+var path = require('path');
 
-routerMember.get("member/login", (req, res) => {
-    res.sendFile(__dirname + '/views/login.html');
-	app.use(express.static("public"));
+routerMember.get("/member/login", (req, res) => {
+    var fullpath = path.join(__dirname, "../views", "login.html")
+    res.sendFile(fullpath);
 });
 
-routerMember.get("member/signup", (req, res) => {
-    console.log(__dirname);
-    res.sendFile(__dirname + '/views/signup.html');
-	app.use(express.static("public"));
+routerMember.get("/member/signup", function(req, res){
+    console.log("Get member...");
+    var fullpath = path.join(__dirname, "../views", "signup.html");
+    res.sendFile(fullpath);
 });
 
 module.exports = routerMember;
