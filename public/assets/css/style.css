@@ -110,11 +110,11 @@ body {
 	font-size: 2em;
 }
 .panel p:nth-child(2) {
-	font-size: 4em;
+	font-size: 3em;
 }
 .panel.open {
 	flex: 5;
-	font-size:40px;
+	font-size:30px;
 }
 /*WOMAN and TECHNOLOGY FACTS*/
 #women-facts {
@@ -272,79 +272,52 @@ input{
 	border: 1px solid red;
 }
 /*	04 - CONTACT FORMS */
-.contact-items {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
+#forms {
 	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
+	width: 100%;
+	height: 100vh;
 	align-items: center;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column; 
-	flex-direction: column;
+	justify-content: space-around;
+}
+.contact-items {	
+	width: 40%;
+	border: 1px solid #ccc;
+}
+.contact-items span {
+	display: flex;
+	align-items: center;
 }
 .contact-items h2 {
-	font-size: 40px;
-	margin-bottom: 18px;
-}
-.contact {
-	padding: 80px 0;
-}
-.contact span {
-	width:100%;
+	text-align: center;
+	font-size: 2em;
 }
 .contact-items input[type="text"] {
 	border-radius: 10px;
-	margin-bottom:15px;
-	padding: 15px;
+	margin:3%;
+	padding: 3%;
 	width: 90%; 
-	flex-wrap: nowrap;
 }
 .contact-items input[type="password"] {
 	border-radius: 10px;
-	margin-bottom:15px;
-	padding: 15px;
-	width: 90%; 
-	flex-wrap: nowrap;
-}
-.contact-items textarea {
-	border-radius: 10px;
-	height: 150px;
-	padding: 15px;
-	width: 90%;
-	flex-wrap: nowrap;
 }
 .contact-items a {
 	background: #57b20c;
 	color: #fff;
-	display: block;
-	font-size: 20px;
-	margin-top: 25px;
-	padding: 15px 80px;
+	font-size: 1em;
 	text-decoration: none;
 	text-transform: uppercase;
+	padding: 3% 8%;
+	text-align: center;
+	margin: 5%;
+}
+.form-button-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 input[type=text], input[type=password] {
     border: 1px solid #ccc;
     font-size: 15px;
-}
-.row {
-	width:100%;
-	max-width:980px;
-	margin: 0 auto;
-}
-.col-1 {
-	width:45%;
-	margin-right:3%;
-	float:left;
-}
-.col-2 {
-	width:45%;
-	float:left;
 }
 
 /* 05 - PROFILE */
@@ -384,9 +357,12 @@ input[type=text], input[type=password] {
 	margin: 3%;
 }
 
-
-
 /* XXX - MEDIA QUEIRIES  */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
 @media all and (max-width: 500px) {
 	#main-header {
 		-webkit-box-orient: vertical;
