@@ -58,25 +58,6 @@ body {
 	margin-right: 20px;
 }
 
-/* 03 - SHOWCASE */
-#showcase {
-	background: url("../images/image1.png");
-	background-size: cover;
-	width: 100%;
-	height: 100vh;
-	border-top: 1px solid #57b20c;  
-}
-#showcase p {
-	color: #57b20c;
-	margin: 0;
-	font-size: 23px;
-	font-weight: bold;
-	text-shadow: 0 2px 2px #000;
-}
-.showcase-content{
-	text-align: center;
-	margin-top: 15%;
-}
 /*SLIDER*/
 .panels {
 	min-height:100vh;
@@ -199,7 +180,7 @@ body {
 .about-container p {
 	font-size: 1.5em;
 }
-/*MAP and CHAT*/
+/*MENTORSHIP and CHAT*/
 .chat-section {
 	display: flex;
 	width: 100%;
@@ -219,9 +200,6 @@ body {
 	width: 100%;
 	padding: 2%;
 	border-bottom: 1px solid #ccc;
-}
- #map{
- 	width: 50%;
 }
 .fa-user {
 	font-size: 1.3em;
@@ -272,6 +250,11 @@ body {
 input{
 	height:30px;
 	border:solid 1px #ccc;
+}
+/*MAP*/
+#map-section {
+	width: 100%;
+	height: 600px;
 }
 /*FOOTER*/
 #main-footer {
