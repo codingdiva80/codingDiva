@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-  	"socket.io": "*",
-  	"express": "*"
+    "socket.io": "*",
+    "express": "*"
+  },
+  "devDependencies": {
+    "request": "^2.83.0"
   }
 }
