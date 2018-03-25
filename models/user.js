@@ -1,16 +1,40 @@
-var mongoose = require("mongoose");
-var passportLocalMongoose = require("passport-local-mongoose");
+var dbConnect = require("../dbConnect");
+var userTable = "codingdiva.user";
 
-var UserSchema = new mongoose.Schema({
-    username: {type: String, required: false, default: ''},
-    password: String,
-    avatar: String,
-    firstName : String,
-    lastName: String,
-    email: String,
-    isAdmin: {type: Boolean, default: false}
-});
+var UserModel = {
 
-UserSchema.plugin(passportLocalMongoose);
+    create: function(data, res) {
+        var newUser = {
+            TableName: userTable,
+            Item: {
+                id: {S: Math.floor(new Date() / 1000).toString()},
+                email: {S: data.email},
+                username: { S: data.username},
+                password: { S: data.password}
+            }
+        };
+    
+        // Call DynamoDB to add the item to the table
+        dbConnect.putItem(newUser, function (err, data) {
+            if (err) {
+                res(err);
+            } else {
+                res(data);
+            }
+        });
+    },
 
-module.exports = mongoose.model("User", UserSchema);
+    read: function(userId){
+
+    },
+
+    update: function(data, userId){
+
+    },
+
+    delete: function(userId){
+
+    }
+}
+
+module.exports = UserModel;

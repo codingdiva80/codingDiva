@@ -3,6 +3,7 @@
 	02 - HEADER and NAVBAR
 	03 - SHOWCASE
 	04 - CONTACT FORMS
+	05 - FORM ELEMENTS
 	XXX - MEDIA QUERIES
 */
 
@@ -74,8 +75,7 @@ body {
 	/* Chrome + FF transitionend event.propertyName === flex-grow */
 	transition:
 	font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-	flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-	background 0.2s;
+	flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11);
 	font-size: 15px;
 	background-size:cover;
 	background-position:center;
@@ -291,7 +291,7 @@ input{
 	text-align: center;
 	font-size: 2em;
 }
-.contact-items input[type="text"] {
+.contact-items input[type="text"], input[type="password"] {
 	border-radius: 10px;
 	margin:3%;
 	padding: 3%;
@@ -309,6 +309,7 @@ input{
 	padding: 3% 8%;
 	text-align: center;
 	margin: 5%;
+	min-width:100px;
 }
 .form-button-div {
 	display: flex;
@@ -355,6 +356,44 @@ input[type=text], input[type=password] {
 	justify-content: center;
 	align-items: center;
 	margin: 3%;
+}
+
+/* 05 - FORM ELEMENTS */
+.form-error {
+	border:1px solid red !important;
+	border-radius: 3px !important;
+}
+.form-no-error {
+	border:none;
+}
+
+#fullCover {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity: .25;
+	z-index:1000;
+}
+#fullCoverMsg {
+	position:absolute;
+	top:25%;
+	z-index:1001;
+	min-width:500px;
+	padding:10px;
+	left: calc(50% - 250px);
+	margin-left:auto;
+	margin-right:auto;
+	background:#fff;
+	border:2px solid #555;
+	border-radius: 3px;
+}
+.img-wait {
+	height:25px;
+	width:25px;
+	vertical-align:middle;
 }
 
 /* XXX - MEDIA QUEIRIES  */
@@ -430,4 +469,5 @@ input[type=text], input[type=password] {
 	.contact-items h2 {
 		font-size: 2em;		
 	}
+
 }
