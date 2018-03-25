@@ -17,9 +17,9 @@ var UserModel = {
         // Call DynamoDB to add the item to the table
         dbConnect.putItem(newUser, function (err, data) {
             if (err) {
-                res(err);
+                res({error:err});
             } else {
-                res(data);
+                res({success:data});
             }
         });
     },

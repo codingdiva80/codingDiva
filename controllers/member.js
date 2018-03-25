@@ -20,11 +20,11 @@ routerMember.post("/member/newsignup", function (req, res) {
     res.set("Content-Type", "html/text");
     res.status(200);
     
-    UserModel.create(data, (msg, error)=>{
-        if(msg){
-            res.send({ msg: "Success"} );
+    UserModel.create(data, (retval)=>{
+        if(retval.error){
+            res.send({ error: retval.error} );
         } else {
-            res.send({ err: error })
+            res.send({ success: retval.success })
         }
     });
     

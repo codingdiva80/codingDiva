@@ -12,6 +12,7 @@
 /* 01 - MAIN  */
 body {
 	color: #1f2021;
+	overflow-x:hidden;
 }
 
 /* 02 - HEADER and NAVBAR */
