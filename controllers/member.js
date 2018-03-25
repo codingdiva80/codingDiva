@@ -21,6 +21,7 @@ routerMember.post("/member/newsignup", function (req, res) {
     res.status(200);
     
     UserModel.create(data, (retval)=>{
+        res.send({ data: retval})
         if(retval.error){
             res.send({ error: retval.error} );
         } else {
