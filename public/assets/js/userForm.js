@@ -1,6 +1,8 @@
 class UserForm {
 
-    constructor(){
+    /* user is a user class type */
+    constructor(user){
+        this.user = user;
         this.setFormError();
         this.initForms();
         this.modal;
@@ -28,12 +30,55 @@ class UserForm {
         }
         if(oLogin){
             oLogin.onclick = () => {
-                this.verifyLogin();
+                if(this.verifyLogin()){
+                    this.submitLogin();
+                }
+                else{
+                    this.errorHandler();
+                }
             }
         }
     }
 
-    /* be sure to include assets/js/modal.js */
+    /* attempting to login, checking against the database */
+    submitLogin(){
+        this.modal = new Modal();
+        this.modal.showWait = true;
+        this.modal.createCoverMessage("Checking login");
+        let formData = {
+            email: document.getElementById("login_email").value,
+            password: document.getElementById("login_password").value
+        }
+        let url = "/member/login";
+        fetch(url, {
+            method: "post",
+            headers: {
+                'Accept': 'application/json, text/plain, text/html, */*',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(formData)
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            if(data.error){
+                this.modal.close();
+                this.formError.oFormEntity = document.getElementById("login_email");
+                this.formError.message = "Email/password combination incorrect";
+                this.errorHandler();
+            }
+            else{
+                this.modal.updateMessage("Logged in, redirecting you to the homepage");
+                this.user.storeLogin(formData);
+                setTimeout(()=>{
+                    document.location.href="/";
+                },1000);
+            }
+        });
+    }
+
+    /* be sure to include assets/js/modal.js 
+       be sure to include assets/js/user.js
+    */
     submitNewUser(){
         this.modal = new Modal();
         this.modal.showWait = true;
@@ -60,6 +105,13 @@ class UserForm {
                 this.formError.oFormEntity = document.getElementById("signup_email");
                 this.formError.message = "This email already exists in our system";
                 this.errorHandler();
+            }
+            else{
+                this.modal.updateMessage("User added, logging you in...");
+                this.user.storeLogin(formData);
+                setTimeout(()=>{
+                    document.location.href="/";
+                },1000);
             }
         });
     }
@@ -116,7 +168,31 @@ class UserForm {
     }
 
     verifyLogin(){
-        console.log("Checking login");
+        this.setFormError();
+        this.unsetErrors();
+        let o_loginEmail = document.getElementById('login_email');
+        let o_loginPassword = document.getElementById('login_password');
+        if(o_loginEmail.value === ""){
+            this.formError.message = "Login is blank";
+            this.formError.oFormEntity = o_loginEmail;
+            return false;
+        }
+        if(o_loginEmail.value.length < 5 || o_loginEmail.value.indexOf("@")===-1){
+            this.formError.message = "Not a valid email address";
+            this.formError.oFormEntity = o_loginEmail;
+            return false;
+        }
+        if(o_loginPassword.value === ""){
+            this.formError.message = "Password cannot be left blank";
+            this.formError.oFormEntity = o_loginPassword;
+            return false;
+        }
+        if(o_loginPassword.value.length < 5){
+            this.formError.message = "Password must be at least 5 characters";
+            this.formError.oFormEntity = o_loginPassword;
+            return false;
+        }
+        return true;
     }
 
     errorHandler(){

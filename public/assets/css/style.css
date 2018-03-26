@@ -4,6 +4,7 @@
 	03 - SHOWCASE
 	04 - CONTACT FORMS
 	05 - FORM ELEMENTS
+	06 - SECTIONS
 	XXX - MEDIA QUERIES
 */
 
@@ -267,6 +268,8 @@ input{
 	color: grey;
 	padding-top: 15px;
 	padding-bottom: 15px; 
+	position:fixed;
+	bottom:0;
 }
 #message {
 	height: 30px;
@@ -395,6 +398,16 @@ input[type=text], input[type=password] {
 	height:25px;
 	width:25px;
 	vertical-align:middle;
+}
+
+/* 06 - SECTIONS */
+#logout {
+	width:100%;
+	height:100%;
+	min-height: 250px;
+	text-align:center;
+	font-size: 25px;
+	padding-top:250px;
 }
 
 /* XXX - MEDIA QUEIRIES  */

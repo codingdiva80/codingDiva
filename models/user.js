@@ -51,6 +51,19 @@ let UserModel = {
                 callBack();
             }
         });
+    },
+
+    checkLogin: function(data, callBack){
+        var self = this;
+        MdlUser.findOne({ 'email' : data.email, 'password': data.password }, 'id email username', function(err, user){
+            if(err){ return console.error('Error finding user'+JSON.stringify(err));}
+            if(user){
+                callBack({ success: "credentials passed" });
+            }
+            else{
+                callBack({ error: "user not found"});
+            }
+        });
     }
 }
 

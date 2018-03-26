@@ -16,8 +16,7 @@
 	            	<li><a href="#">Mentorship</a></li>
 	            	<li><a href="#">Job Board</a></li>
 	            	<li><a href="#">Resources</a></li>
-	            	<li><a href="/member/signup">Sign Up/Login</a></li>
-	            	<li><a href="#">Profile</a></li>
+	            	<li id='nav-user'><a href="/member/signup"></a></li>
             	</ul>
             </nav>
         </header>
@@ -144,6 +143,10 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
   	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwJB8Tpzt1xVwCrlPFxmCF_5KEYkCu250&callback=initMap"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script src="assets/js/user.js"></script>
+	<script>
+		User.updateNav();
+	</script>
 </body>
 </html>

@@ -15,6 +15,11 @@ routerMember.get("/member/signup", function (req, res) {
     res.sendFile(fullpath);
 });
 
+routerMember.get("/member/logout", function(req, res){
+    var fullpath = path.join(__dirname, "../views", "logout.html");
+    res.sendFile(fullpath);
+});
+
 routerMember.post("/member/newsignup", function (req, res) {
     let data = req.body;
     res.set("Content-Type", "html/text");
@@ -28,6 +33,20 @@ routerMember.post("/member/newsignup", function (req, res) {
         }
     });
     
+});
+
+routerMember.post("/member/login", function(req, res){
+    let data = req.body;
+    res.set("Content-Type", "html/text");
+    res.status(200);
+    
+    UserModel.checkLogin(data, function(retval){
+        if(retval.error){
+            res.send({ error: retval.error} );
+        } else {
+            res.send({ success: retval.success })
+        }
+    });
 });
 
 module.exports = routerMember;

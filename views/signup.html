@@ -33,7 +33,7 @@
             </div>
             <div class="contact-items login-div">
                 <h2>Login</h2>
-                <span><input type="text" placeholder="Email..." id="login_username" /></span>
+                <span><input type="text" placeholder="Email..." id="login_email" /></span>
                 <span><input type="password" placeholder="password ..." id="login_password" /></span>                                                                               
                 <div class="form-button-div"><a href="#" id="login">Login!</a></div>
             </div>
@@ -49,6 +49,7 @@
 <script src="/assets/js/modal.js"></script>
 <script src="/assets/js/userForm.js"></script>
 <script>
-    let userForm = new UserForm();
+    let user = new User();
+    let userForm = new UserForm(user);
 </script>
 </html>

@@ -3,6 +3,7 @@ class Modal {
     constructor(){
         this.showWait = false;
         this.centered = true;
+        this.oMsg;
     }
 
     createCover(){
@@ -24,22 +25,30 @@ class Modal {
         if(this.showWait){
             html = `
                 <div style=${style}>
-                    <div>${msg}</div>
-                    <div id='update-msg'></div>
                     <div>
                         <span><i>please wait...</i></span>
                         <span><img src='/assets/images/icons/2.gif' class='img-wait' /></span>
                     </div>  
+                    <div id='msg-area'>${msg}</div>
                 </div>`;
         }
         else{
-            html = msg;
+            html = `<div id='msg-area'>${msg}</div>`;
         }
         oDiv.innerHTML = html;
         document.body.appendChild(oDiv);
         if(showClose){
             oDiv.innerHTML += "<div class='close'><a href='#'>Close</a></div>";
         }
+        this.oMsg = oDiv;
+    }
+
+    updateMessage(msg){
+        document.getElementById('msg-area').innerHTML = `<div>${msg}</div>`;
+    }
+
+    appendMessage(){
+        document.getElementById('msg-area').innerHTML += `<div>${msg}</div>`;
     }
 
     removeCover(){
