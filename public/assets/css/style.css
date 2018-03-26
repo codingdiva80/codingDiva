@@ -86,11 +86,11 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-.panel1 { background-image:url("../images/home/slider_1.jpg"); }
-.panel2 { background-image:url("../images/home/slider_2.jpg"); }
-.panel3 { background-image:url("../images/home/slider_3.jpg"); }
-.panel4 { background-image:url("../images/home/slider_4.jpg"); }
-.panel5 { background-image:url("../images/home/slider_5.jpg"); }
+.panel1 { background-image:url("/assets/images/home/slider_1.jpg"); }
+.panel2 { background-image:url("/assets/images/home/slider_2.jpg"); }
+.panel3 { background-image:url("/assets/images/home/slider_3.jpg"); }
+.panel4 { background-image:url("/assets/images/home/slider_4.jpg"); }
+.panel5 { background-image:url("/assets/images/home/slider_5.jpg"); }
 
 /* Flex Items */
 .panel > * {

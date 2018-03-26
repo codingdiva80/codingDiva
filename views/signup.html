@@ -45,11 +45,12 @@
 	</div>
 
 </body>
-<script src="/assets/js/user.js"></script>
-<script src="/assets/js/modal.js"></script>
-<script src="/assets/js/userForm.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/dist/js/scripts.min.js"></script>
 <script>
     let user = new User();
     let userForm = new UserForm(user);
+    let ui = new UI();
+    ui.renderMainNav();
 </script>
 </html>

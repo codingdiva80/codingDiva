@@ -2,23 +2,14 @@
 <html>
 <head>
 	<title>codingDiva</title>
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 		<!-- HEADER -->
 		<header id="main-header">
-            <nav id="navbar">
-            	<ul>
-	            	<li><a href="#">Home</a></li>
-	            	<li><a href="#">Mentorship</a></li>
-	            	<li><a href="#">Job Board</a></li>
-	            	<li><a href="#">Resources</a></li>
-	            	<li id='nav-user'><a href="/member/signup"></a></li>
-            	</ul>
-            </nav>
+            
         </header>
 	    <!-- LANDING SLIDER -->
 	    <section id="slider">
@@ -142,11 +133,10 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-  	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwJB8Tpzt1xVwCrlPFxmCF_5KEYkCu250&callback=initMap"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
-	<script src="assets/js/user.js"></script>
+	<script src="/dist/js/scripts.min.js"></script>
 	<script>
-		User.updateNav();
+		let ui = new UI();
+		ui.renderMainNav();
 	</script>
 </body>
 </html>
