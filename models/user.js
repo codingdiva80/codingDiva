@@ -1,39 +1,56 @@
-var dbConnect = require("../dbConnect");
+var mongoConnect = require("../mongoConnect");
 var userTable = "codingdiva.user";
+var mongoose = require("mongoose");
+var dateFormat = require("dateformat")
 
-var UserModel = {
+var UserSchema = new mongoose.Schema({
+    id: String,
+    username: String,
+    password: String,
+    email: String,
+    signupDate: Date
+});
 
-    create: function(data, res) {
-        var newUser = {
-            TableName: userTable,
-            Item: {
-                id: {S: Math.floor(new Date() / 1000).toString()},
-                email: {S: data.email},
-                username: { S: data.username},
-                password: { S: data.password}
+var MdlUser = mongoose.model("codingdiva.user", UserSchema);
+
+let UserModel = {
+
+    user: null,
+    resolve: null,
+
+    create: function(data, cb){
+        this.resolve = cb;
+        var now = new Date();
+        data.id = Math.floor(new Date() /1000).toString();
+        data.signupDate = dateFormat(now, "yyyy-mm-dd hh:MM:ss");
+        this.user = new MdlUser(data);
+        var addUser = (function(){
+            this.addUserToDatabase();
+        }).bind(this);
+        this.findByEmail(data, addUser);  
+    },
+
+    addUserToDatabase: function(data){
+        this.user.save()
+            .then(item => {
+                this.resolve({ sucess: "Item saved"});
+            })
+            .catch(err => {
+                this.resolve({ error: err });
+            });
+    },
+
+    findByEmail: function(data, callBack) {
+        var self = this;
+        MdlUser.findOne({ 'email' : data.email }, 'id email username', function(err, user){
+            if(err){ return console.error('Error finding user');}
+            if(user){
+                self.resolve({ error: "email exists" });
             }
-        };
-    
-        // Call DynamoDB to add the item to the table
-        dbConnect.putItem(newUser, function (err, data) {
-            if (err) {
-                res({error:err});
-            } else {
-                res({success:data});
+            else{
+                callBack();
             }
         });
-    },
-
-    read: function(userId){
-
-    },
-
-    update: function(data, userId){
-
-    },
-
-    delete: function(userId){
-
     }
 }
 

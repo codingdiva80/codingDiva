@@ -55,7 +55,12 @@ class UserForm {
         }).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log(data);
+            if(data.error && data.error === "email exists"){
+                this.modal.close();
+                this.formError.oFormEntity = document.getElementById("signup_email");
+                this.formError.message = "This email already exists in our system";
+                this.errorHandler();
+            }
         });
     }
 

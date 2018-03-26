@@ -43,7 +43,7 @@ class Modal {
     }
 
     removeCover(){
-        let oDiv = document.getElementById('fullcover');
+        let oDiv = document.getElementById('fullCover');
         if(oDiv){
             oDiv.parentNode.removeChild(oDiv);
         }
@@ -51,6 +51,11 @@ class Modal {
         if(cDiv){
             cDiv.parentNode.removeChild(cDiv);
         }
+    }
+
+    //close is an alias of removeCover
+    close(){
+        this.removeCover();
     }
 
 }
