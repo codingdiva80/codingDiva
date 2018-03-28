@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>codingDiva</title>
 	<link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
+
 <body>
 	<div class="wrapper">
 		<!-- HEADER -->
 		<header id="main-header">
-            
-        </header>
-	    <!-- LANDING SLIDER -->
-	    <section id="slider">
+
+		</header>
+		<!-- LANDING SLIDER -->
+		<section id="slider">
 			<div class="panels">
 				<div class="panel panel1">
 					<p>Join</p>
@@ -40,41 +42,37 @@
 					<p>Code!</p>
 				</div>
 			</div>
-	    </section>
-	      <section id="about-coding">
-	    	<div class="about-container">
-	    		<h1>codingDiva</h1>
-	    		<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-	    	</div>
-	    </section>
-	    <!-- MAP -->
-	    <section class="chat-section">
-			
-	    	<div class="mentorship-div">
-	    		<select>
-					<option>All</option>	
+		</section>
+		<section id="about-coding">
+			<div class="about-container">
+				<h1>codingDiva</h1>
+				<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+					ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It
+					has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+					</p>
+			</div>
+		</section>
+		<!-- MAP -->
+		<section class="chat-section">
+
+			<div class="mentorship-div">
+				<select>
+					<option>All</option>
 					<option>Mentees</option>
 					<option>Mentors</option>
 				</select>
-	    		<h1>Mentorship</h1>
-	    		<i class="fas fa-user" id="mentor-icon"></i> Mentor
-	    		<i class="fas fa-user" id="mentee-icon"></i> Mentee<br><br><br>
-	    		<div><i class="fas fa-user" id="mentor-icon"></i><br>Username: Luna<br>Date: Feb 7<br>Location: San Francisco<br>Hello divas, I am an experinced web developer. I mainly work with front-end technologies but have some experince with node and mongo. I am mainly free in the evenings for an hour or so. I would like to help if you have any questions about anything tech related!<a href="#"> Request Mentorship</a></div><br>
-	    		<div><i class="fas fa-user" id="mentee-icon"></i><br>Username: Kate<br>Date: Feb 7<br>Location: San Francisco<br>hello friends. I am having the hardest time with React js. I just started learning it and can't wrap my head around props and state. If anybody could walk me through that, that would be great! I am flexible with my schedule. Just let me know when it's convenient for you. Thanks so much!<a href="#"> Mentor</a></div><br>
-	    		<div><i class="fas fa-user" id="mentee-icon"></i><br>Username: Jane<br>Date: Feb 7<br>Location: San Jose<br>Hey guys, I am working on a data scraping project and I am stuck on the mongo database. If anybody could look at my code tonight or tomorrow morning, that would be super helpful! Thanks in advance! <a href="#"> Mentor</a></div>
-	    		<div><i class="fas fa-user" id="mentor-icon"></i><br>Username: Ann<br>Date: Feb 7<br>Location: Alameda<br>Hello people if you need any help getting ready for technical interviews, I am here to help. <a href="#"> Request Mentorship</a></div>      
-	    		<div><i class="fas fa-user" id="mentee-icon"></i><br>Username: Mary<br>Date: Feb 7<br>Location: San Leandro<br>Hi! I am a student, I just learning HTML and CSS and I am so confused about all the technologies out there. I don't know what to start learning first. If anybody could advise, that would be great! Can't wait to hear from you!<a href="#"> Mentor</a></div><br>
-	    		<button>Post</button>  		
-	    	</div>
-	    	<div id="container">
+				<p id='mentorship-posts'></p>
+			</div>
+			<div id="container">
 				<div id="namesWrapper">
-					<h2>DivaChat</h2>	
+					<h2>DivaChat</h2>
 					<p>Login:</p>
 					<div id="error"></div>
 					<form id="loginForm">
 						<label for="username">Username:</label>
 						<input type="text" size="35" id="username">
-						<label for="password" >Password: </label><input type="password" id="password" />
+						<label for="password">Password: </label>
+						<input type="password" id="password" />
 						<input type="submit" value="Submit">
 					</form>
 				</div>
@@ -91,14 +89,14 @@
 					<div id="userWrapper">
 						<div id="users"></div>
 					</div>
-				</div>	  		
+				</div>
 			</div>
-	    </section>
-	    <section id="map-section">
-	    	<div id="map"></div>
-	    </section>
-	    <!-- CHAT -->
-	   <!--  <section id="chat">
+		</section>
+		<section id="map-section">
+			<div id="map"></div>
+		</section>
+		<!-- CHAT -->
+		<!--  <section id="chat">
 	    	<div id="container">
 				<div id="namesWrapper">
 					<h2>ChatIO</h2>
@@ -126,10 +124,10 @@
 				</div>
 			</div>
 	    </section> -->
-	    <!-- FOOTER -->
-	     <footer id="main-footer">
-            <p>Copyright &copy; 2018 | codingDiva </p>
-        </footer>
+		<!-- FOOTER -->
+		<footer id="main-footer">
+			<p>Copyright &copy; 2018 | codingDiva </p>
+		</footer>
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
@@ -137,6 +135,11 @@
 	<script>
 		let ui = new UI();
 		ui.renderMainNav();
+		let user = new User();
+		let mentorship = new Mentorship(user);
+		mentorship.renderPosts('mentorship-posts');
+		renderPostButton('mentorship-posts');
 	</script>
 </body>
+
 </html>

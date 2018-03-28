@@ -70,7 +70,8 @@ class UserForm {
                 this.modal.updateMessage("Logged in, redirecting you to the homepage");
                 this.user.storeLogin(formData);
                 setTimeout(()=>{
-                    document.location.href="/";
+                    let location = UI.getLastLink();
+                    document.location.href=location;
                 },1000);
             }
         });

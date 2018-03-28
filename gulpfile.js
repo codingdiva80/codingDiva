@@ -42,4 +42,4 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(cssDest));
 });
 
-gulp.task('default', ['compress', 'styles', 'scripts']);
+gulp.task('default', ['compress', 'styles', 'scripts', 'compress', 'styles', 'scripts']);

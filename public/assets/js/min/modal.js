@@ -4,27 +4,36 @@ class Modal {
         this.showWait = false;
         this.centered = true;
         this.oMsg;
+        this.wide = false;
     }
 
     createCover(){
         this.removeCover();
         let oDiv = document.createElement("div");
         oDiv.id = "fullCover";
+        oDiv.style.height = document.body.scrollHeight + "px";
         document.body.appendChild(oDiv);
     }
 
     createCoverMessage(msg="", showClose=false){
+        let width = (this.wide) ? 
+                                 Math.floor(document.body.clientWidth * .8): 
+                                 Math.floor(document.body.clientWidth * .5);
         this.createCover();
         let oDiv = document.createElement("div");
         oDiv.id = "fullCoverMsg";
+        let left = Math.floor((document.body.clientWidth/2) - (width/2));
+        oDiv.style.left = `${left}px`;
+        oDiv.style.width = `${width}px`;
         let html = "";
         let style = "";
+        
         if(this.centered){
-            style = "text-align:center";
+            style = "text-align:center;";
         }
         if(this.showWait){
             html = `
-                <div style=${style}>
+                <div style='${style}'>
                     <div>
                         <span><i>please wait...</i></span>
                         <span><img src='/assets/images/icons/2.gif' class='img-wait' /></span>
@@ -33,7 +42,7 @@ class Modal {
                 </div>`;
         }
         else{
-            html = `<div id='msg-area'>${msg}</div>`;
+            html = `<div id='msg-area' style='${style}'>${msg}</div>`;
         }
         oDiv.innerHTML = html;
         document.body.appendChild(oDiv);
@@ -43,12 +52,24 @@ class Modal {
         this.oMsg = oDiv;
     }
 
-    updateMessage(msg){
-        document.getElementById('msg-area').innerHTML = `<div>${msg}</div>`;
+    updateMessage(msg, time=0){
+        let style = "";
+        if(this.centered){
+            style = "width:100%;text-align:center";
+        }
+        setTimeout(()=>{
+            document.getElementById('msg-area').innerHTML = `<div style='${style}'>${msg}</div>`;
+        }, time);
     }
 
-    appendMessage(){
-        document.getElementById('msg-area').innerHTML += `<div>${msg}</div>`;
+    appendMessage(msg, time=0){
+        let style = "";
+        if(this.centered){
+            style = "width:100%;text-align:center";
+        }
+        setTimeout(()=>{
+            document.getElementById('msg-area').innerHTML += `<div style='${style}'>${msg}</div>`;
+        }, time);
     }
 
     removeCover(){
@@ -62,9 +83,10 @@ class Modal {
         }
     }
 
-    //close is an alias of removeCover
-    close(){
-        this.removeCover();
+    //static close is an alias of removeCover
+    static close(){
+        let modal = new Modal();
+        modal.removeCover();
     }
 
 }
