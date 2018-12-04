@@ -1,0 +1,20 @@
+{
+  "name": "codingdivaapp",
+  "version": "1.0.0",
+  "description": "test heroku deployment",
+  "engines": {
+    "node": "11.1.0",
+    "npm": "6.4.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "serve-static": "^1.13.2"
+  }
+}
