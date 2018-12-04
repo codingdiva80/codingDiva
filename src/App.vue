@@ -1,28 +1,64 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MainFoundation v-if="getRoute==='home'" />
+    <JobSearch v-else-if="getRoute==='job-search'" />
+    <About v-else-if="getRoute==='about'" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainFoundation from '@/components/main/main-foundation';
+import JobSearch from '@/components/job-search/job-search-foundation';
+import About from '@/components/about/about-foundation';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    MainFoundation,
+    JobSearch,
+    About,
+  },
+  computed: {
+    getRoute() {
+      return this.$store.getters.getNav;
+    }
   }
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+  background: #cdcdcd;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+.centered-div {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.centered-text {
+  text-align: center;
+}
+.padding-50 {
+  padding: 50px;
+}
+
 </style>
