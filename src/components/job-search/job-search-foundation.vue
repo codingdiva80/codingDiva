@@ -11,14 +11,25 @@
           <div class='search-icon'></div>
           <div class='search-input-container'>
             <input type='text' class='search-input' placeholder='Job keyword' />
+            <datalist id="datalist-locations" />
           </div>
         </div>
         <div class='col'>
           <div class='location-icon'></div>
           <div class='search-location-container'>
-            <input type='text' class='search-input' placeholder='Location' />
+            <input type='text' 
+              class='search-input' 
+              placeholder='Location' 
+              @keyup="getLocations"  
+              id="location-search"   
+            />
+            <datalist id="datalist-locations" />
           </div>
-        </div>
+        </div> 
+
+        <div class='col'>
+          <a class='search-button'>Search</a>
+        </div>       
       </div>
       
     </div>
@@ -29,12 +40,41 @@
 <script>
   import MainHeader from '@/components/main/main-header';
   import MainFooter from '@/components/main/main-footer';
+  import cities from '@/assets/data/usaCities';
 
   export default {
     name: 'JobSearch', 
     components: {
       MainHeader,
       MainFooter,
+    },
+    data() {
+      return {
+        minLength: false,
+      }
+    },
+    methods: {
+      getLocations($event){
+        const locationSearch = document.querySelector('#location-search');
+        const value = $event.target.value;
+        if(value.length > 3){
+          locationSearch.setAttribute('list', 'datalist-locations');
+        }
+        else { 
+          locationSearch.setAttribute('list', null);
+         }
+      },
+      populateLocationsList(){
+        let dataList = document.querySelector('#datalist-locations');
+        cities.forEach(item => {
+          const option = document.createElement('option');
+          option.value = `${item.city}, ${item.state}`;
+          dataList.appendChild(option);
+        })
+      },
+    },
+    mounted() {
+      this.populateLocationsList();
     }
   }
 </script>
@@ -50,7 +90,6 @@
   }
   .col {
     flex: 1;
-    width: 50%;
   }
   .search-inputs-container {
     width: 600px;
@@ -91,7 +130,7 @@
   }
 
   .search-input {
-    width: 100%;
+    width: calc(100% - 10px);
     height: 36px;
     font-size: 1.3em;
     padding: 0;
@@ -112,6 +151,15 @@
     border: 0;
     position: relative;
     display: inline-block;
+  }
+
+  .search-button {
+    height: 40px;
+    border: 0;
+    background: #04cc0a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
   }
 
   @media screen and (max-width:576px) {
