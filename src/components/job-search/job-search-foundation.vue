@@ -26,10 +26,10 @@
             <datalist id="datalist-locations" />
           </div>
         </div> 
-
         <div class='col'>
           <a class='search-button'>Search</a>
-        </div>       
+        </div>
+               
       </div>
       
     </div>
@@ -154,12 +154,16 @@
   }
 
   .search-button {
-    height: 40px;
+    height: 56px;
     border: 0;
     background: #04cc0a;
     color: #fff;
     font-size: 10px;
     font-weight: bold;
+    display:flex;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    vertical-align: middle;
   }
 
   @media screen and (max-width:576px) {
