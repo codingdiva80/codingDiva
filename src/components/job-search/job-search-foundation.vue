@@ -28,10 +28,12 @@
         </div> 
         <div class='col'>
           <a class='search-button'>Search</a>
-        </div>
-               
+        </div>         
       </div>
       
+      <div>
+        <job-search-results />
+      </div>
     </div>
     <MainFooter />
   </div>
@@ -41,12 +43,14 @@
   import MainHeader from '@/components/main/main-header';
   import MainFooter from '@/components/main/main-footer';
   import cities from '@/assets/data/usaCities';
+  import JobSearchResults from './job-search-results';
 
   export default {
     name: 'JobSearch', 
     components: {
       MainHeader,
       MainFooter,
+      JobSearchResults,
     },
     data() {
       return {
@@ -158,12 +162,18 @@
     border: 0;
     background: #04cc0a;
     color: #fff;
-    font-size: 10px;
+    font-size: 24px;
     font-weight: bold;
     display:flex;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background:#2efa35;
+    }
   }
 
   @media screen and (max-width:576px) {
