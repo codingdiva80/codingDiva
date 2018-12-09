@@ -60,5 +60,8 @@ body {
 .padding-50 {
   padding: 50px;
 }
+.busy {
+  font-style: italic;
+}
 
 </style>

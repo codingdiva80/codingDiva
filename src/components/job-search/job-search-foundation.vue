@@ -10,7 +10,7 @@
         <div class='col'>
           <div class='search-icon'></div>
           <div class='search-input-container'>
-            <input type='text' class='search-input' placeholder='Job keyword' />
+            <input type='text' class='search-input' placeholder='Job keyword' v-model="searchCriteria" />
             <datalist id="datalist-locations" />
           </div>
         </div>
@@ -21,18 +21,19 @@
               class='search-input' 
               placeholder='Location' 
               @keyup="getLocations"  
-              id="location-search"   
+              id="location-search" 
+              v-model="searchLocation"  
             />
             <datalist id="datalist-locations" />
           </div>
         </div> 
         <div class='col'>
-          <a class='search-button'>Search</a>
+          <a class='search-button' @mousedown="clearSearch" @mouseup="doSearch">Search</a>
         </div>         
       </div>
       
       <div>
-        <job-search-results />
+        <job-search-results v-if="searching" />
       </div>
     </div>
     <MainFooter />
@@ -44,6 +45,7 @@
   import MainFooter from '@/components/main/main-footer';
   import cities from '@/assets/data/usaCities';
   import JobSearchResults from './job-search-results';
+  import { SET_JOB_SEARCH } from '@/store/mutation-types';
 
   export default {
     name: 'JobSearch', 
@@ -55,6 +57,8 @@
     data() {
       return {
         minLength: false,
+        searchCriteria: '',
+        searchLocation: '',
       }
     },
     methods: {
@@ -76,10 +80,25 @@
           dataList.appendChild(option);
         })
       },
+      clearSearch(){
+        this.$store.commit(SET_JOB_SEARCH, { isSearching: false });
+      },
+      doSearch(){
+        this.$store.commit(SET_JOB_SEARCH, {
+          isSearching: true,
+          searchCriteria: this.searchCriteria,
+          searchLocation: this.searchLocation
+        });
+      },
     },
     mounted() {
       this.populateLocationsList();
-    }
+    },
+    computed: {
+      searching(){
+        return this.$store.state.JobSearch.isSearching
+      }
+    },
   }
 </script>
 
@@ -96,7 +115,7 @@
     flex: 1;
   }
   .search-inputs-container {
-    width: 600px;
+    width: 900px;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
