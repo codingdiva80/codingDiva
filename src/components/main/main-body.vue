@@ -7,17 +7,18 @@
 </template>
 
 <script>
+
 export default {
-  name: 'MainWelcome'
+  name: 'MainBody',
 }
 </script>
 
 <style>
   #welcome {
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 50%;
+    top: 400px;
     color: #fff;
     font-size: 3em;
     z-index: 10;
@@ -28,4 +29,5 @@ export default {
     padding: 5px;
     font-weight: bold;
   }
+
 </style>

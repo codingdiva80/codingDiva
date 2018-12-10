@@ -3,6 +3,8 @@
     <MainFoundation v-if="getRoute==='home'" />
     <JobSearch v-else-if="getRoute==='job-search'" />
     <About v-else-if="getRoute==='about'" />
+    <Resources v-else-if="getRoute==='resources'" />
+    <Mentorship v-else-if="getRoute==='mentorship'" />
   </div>
 </template>
 
@@ -10,6 +12,8 @@
 import MainFoundation from '@/components/main/main-foundation';
 import JobSearch from '@/components/job-search/job-search-foundation';
 import About from '@/components/about/about-foundation';
+import Resources from '@/components/resources/resources-foundation';
+import Mentorship from '@/components/mentorship/mentorship-foundation';
 
 export default {
   name: 'app',
@@ -17,6 +21,8 @@ export default {
     MainFoundation,
     JobSearch,
     About,
+    Resources,
+    Mentorship,
   },
   computed: {
     getRoute() {
@@ -27,9 +33,13 @@ export default {
 </script>
 
 <style>
+body, html {
+  height: 100%;
+}
 body {
   margin: 0;
   background: #cdcdcd;
+  height: 100%;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #ccc;
@@ -48,6 +58,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  min-height: 100%;
+  position: relative;
 }
 .centered-div {
   width: 100%;

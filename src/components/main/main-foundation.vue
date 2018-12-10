@@ -2,7 +2,12 @@
   <div>
     <div id='main'>
       <MainHeader />
-      <MainWelcome />
+      <MainBody />
+    </div>
+    <div id='visualizations-container'>
+      <DevsByGender />
+      <PrimaryLanguages />
+      <SoftwareExperience />
     </div>
     <MainFooter />
   </div>
@@ -11,15 +16,21 @@
 
 <script>
 import MainHeader from './main-header';
-import MainWelcome from './main-welcome';
+import MainBody from './main-body';
 import MainFooter from './main-footer';
+import DevsByGender from '@/components/global/visualizations/devs-by-gender';
+import PrimaryLanguages from '@/components/global/visualizations/primary-languages';
+import SoftwareExperience from '@/components/global/visualizations/software-experience';
 
 export default {
  name: 'MainComponent', 
  components: {
    MainHeader,
-   MainWelcome,
-   MainFooter
+   MainBody,
+   MainFooter,
+   DevsByGender,
+   PrimaryLanguages,
+   SoftwareExperience
  }
 }
 </script>
@@ -32,4 +43,16 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
   }
+  #visualizations-container {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .vis {
+    margin-right: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
 </style>
