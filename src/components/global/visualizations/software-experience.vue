@@ -1,6 +1,6 @@
 <template>
   <div class='vis'>
-    <div>Devs by gender</div>
+    <div>Devs by Experience</div>
     <div>
       <svg id="xp-pie-chart" />
     </div>
