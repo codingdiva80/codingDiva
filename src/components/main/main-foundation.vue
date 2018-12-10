@@ -4,6 +4,9 @@
       <MainHeader />
       <MainBody />
     </div>
+    <div id="main-message">
+      <MainMessage />
+    </div>
     <div id='visualizations-container'>
       <DevsByGender />
       <PrimaryLanguages />
@@ -21,6 +24,7 @@ import MainFooter from './main-footer';
 import DevsByGender from '@/components/global/visualizations/devs-by-gender';
 import PrimaryLanguages from '@/components/global/visualizations/primary-languages';
 import SoftwareExperience from '@/components/global/visualizations/software-experience';
+import MainMessage from './main-message';
 
 export default {
  name: 'MainComponent', 
@@ -28,6 +32,7 @@ export default {
    MainHeader,
    MainBody,
    MainFooter,
+   MainMessage,
    DevsByGender,
    PrimaryLanguages,
    SoftwareExperience
@@ -48,6 +53,13 @@ export default {
     width: 1000px;
     margin: 0 auto;
     justify-content: center;
+  }
+  #main-message {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.3em;
+    width: 100%;
+    background: #aaa;
   }
   .vis {
     margin-right: 20px;

@@ -66,6 +66,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+.centered-div-1000 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .centered-text {
   text-align: center;
 }
